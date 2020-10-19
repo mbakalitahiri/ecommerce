@@ -18,7 +18,8 @@
 
       <div class="row">
           <div class="col bg-primary text-white col-12">
-              <a class="navbar-brand text-light" [routerLink]="['/']">Your cart detaills</a>
+              <a class="navbar-brand text-light"
+          [routerLink]="['/']">Your cart detaills</a>
             </div>
         </div>
 
@@ -34,13 +35,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let line of cart.lines">
-          <td><input type="number" class="form-control-sm"  style="width:5em"
-                                   [value]="line.quantity"   (change)="cart.updateQuantity(line.product,
+          <td><input type="number"
+              class="form-control-sm"
+               style="width:5em"
+                                   [value]="line.quantity"
+                (change)="cart.updateQuantity(line.product,
                                 $event.target.value)" /></td>
           <td>{{line.product.name}}</td>
           <td>{{line.product.price | currency:"GBP":"symbol":"2.2-2"}}</td>
           <td>{{(line.lineTotal) | currency:"GBP":"symbol":"2.2-2" }}</td>
-          <td>  <button class="btn btn-sm btn-warning"                       (click)="cart.removeLine(line.product.id)">
+          <td>  <button class="btn btn-sm btn-warning"
+                                    (click)="cart.removeLine(line.product.id)">
                               Remove
                             </button></td>
         </tr>
@@ -51,13 +56,15 @@
       <div class="row">
           <div class="col">
             <div class="text-center">
-                <button class="btn btn-primary m-1" routerLink="/store">
+                <button class="btn btn-primary m-1"
+            routerLink="/store">
                       Continue Shopping
                   </button>
-                <button class="btn btn-secondary m-1" routerLink="/checkout"
-                          [disabled]="cart.lines.length == 0">
-                    Checkout
-                  </button>
+                <button class="btn btn-secondary m-1"
+            routerLink="/checkout"
+                        [disabled]="cart.lines.length == 0 || !connected">
+                  {{  connected ?  'Checkout' : 'Offline' }}
+                </button>
               </div>
           </div>
     </div>

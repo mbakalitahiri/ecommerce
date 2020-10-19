@@ -1,3 +1,5 @@
+import { CounterAdminDirective } from './counteradmin.directive';
+import { CounterDirective } from './../store/counter.directive';
 import { CartDetaillsComponent } from './cart-detaills.component';
 import { OrderTableComponent } from './orderTable.component';
 import { ProductEditorComponent } from './productEditor.component';
@@ -29,7 +31,8 @@ let routing = RouterModule.forChild([
 
 @NgModule({
   imports: [CommonModule, FormsModule, routing],
-  declarations: [AuthComponent, AdminComponent, ProductTableComponent, ProductEditorComponent, OrderTableComponent,CartDetaillsComponent],
+  declarations: [AuthComponent, AdminComponent, ProductTableComponent, ProductEditorComponent, OrderTableComponent,CartDetaillsComponent, CounterAdminDirective
+  ],
   exports: [],
   providers: [AuthGuard],
 })

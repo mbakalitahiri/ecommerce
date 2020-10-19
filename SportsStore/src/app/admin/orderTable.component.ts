@@ -12,12 +12,23 @@ export class OrderTableComponent implements OnInit {
   includeShipped = true;
   orders:any = [];
 
+  public productsPerPage = 4;
+  public selectedPage = 1;
+  public selectedCategory = null;
+
+
   constructor(private repository: OrderRepository) {}
-  getOrders(): Order[] {
-      return this.repository
-      .getOrders()
-      .filter((o) => this.includeShipped );
-  }
+  // getOrders(): Order[] {
+  //     return this.repository
+  //     .getOrders()
+  //     .filter((o) => this.includeShipped );
+  // }
+
+  getOrders(): Order[]{
+
+    let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
+     return this.repository.getOrders().slice(pageIndex, pageIndex + this.productsPerPage);
+   }
   markShipped(order: Order) {
     order.shipped = true;
     this.repository.updateOrder(order);
@@ -36,5 +47,19 @@ export class OrderTableComponent implements OnInit {
   public selectCompany(event: any, item: any) {
 
     this.currentCompany = item.id;
+  }
+
+  changePage(newPage: number) {
+    this.selectedPage = newPage;
+  }
+  changePageSize(newSize: number) {
+    this.productsPerPage = Number(newSize);
+    this.changePage(1);
+  }
+  get pageCount(): any {
+     return Math.ceil(
+      this.repository.getOrders().length /
+        this.productsPerPage
+    );
   }
 }

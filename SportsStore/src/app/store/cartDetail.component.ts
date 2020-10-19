@@ -1,3 +1,4 @@
+import { ConnectionService } from './../model/connection.service';
 import { Cart } from './../model/cart.model';
 import { Component } from '@angular/core';
 
@@ -6,7 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './cartDetail.component.html',
 })
 export class CartDetaillComponent {
+  public connected: boolean = true;
 
-  constructor(public cart: Cart) {}
-  status:string = 'bg-danger'
+  constructor(public cart: Cart, private connection: ConnectionService) {
+    this.connected = this.connection.connected;
+    connection.Changes.subscribe((state) => (this.connected = state));
+  }
+  status: string = 'bg-danger';
 }

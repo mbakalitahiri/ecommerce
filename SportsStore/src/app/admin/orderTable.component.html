@@ -1,17 +1,36 @@
-<div *ngIf="getOrders().length > 0 ;else empthyTable">
+<!-- <div *ngIf="getOrders().length > 0 ;else empthyTable"> -->
+<div>
   <div class="row"
     style=" justify-content:center;">
     <h1>Orders List</h1>
   </div>
 
-  <!-- <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox"
-        class="form-check-input"
-        [(ngModel)]="includeShipped" />
-              Display Shipped Orders
-          </label>
-  </div> -->
+
+  <div class="col-3">
+            <select class="form-control"
+      [value]="productsPerPage"
+      (change)="changePageSize($event.target.value)">
+                
+      <option value="3">3 items per Page</option>
+                
+      <option value="4">4 items per Page</option>
+      <option value="6">6 items per Page</option>
+                
+      <option value="8">8 items per Page</option>
+            
+      <div class="btn-group mt-2">
+                <button *counter="let page of pageCount"
+          (click)="changePage(page)"
+          class="btn btn-outline-primary btn-sm"
+          [class.active]="page == selectedPage">
+                    {{ page }}         
+        </button>
+              
+      </div>
+            
+    </select>
+  </div>
+
 
 
 
@@ -66,6 +85,17 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="col-9 mt-4">
+  <ul class="pagination">
+    <li *counter="let page of pageCount"
+      (click)="changePage(page)"
+      class="page-item"
+      [class.active]="page == selectedPage">
+      <a class="page-link">{{ page }}</a>
+    </li>
+  </ul>
 </div>
 <ng-template #empthyTable>
   <div class="row"

@@ -12,8 +12,8 @@ import { StoreRoutingmodule } from './store.routing.module';
 
 @NgModule({
   declarations: [
-    StoreComponent,
     CounterDirective,
+    StoreComponent,
     CartSummaryComponent,
     CartDetaillComponent,
     CheckoutComponent,
@@ -27,6 +27,6 @@ import { StoreRoutingmodule } from './store.routing.module';
     StoreRoutingmodule,
     FormsModule,
   ],
-  exports: [StoreComponent, CartDetaillComponent, CheckoutComponent],
+  exports: [StoreComponent, CartDetaillComponent, CheckoutComponent,CounterDirective],
 })
 export class StoreModule {}
