@@ -1,0 +1,29 @@
+<h4>Cart Detaills</h4>
+<table class="table   mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price (unit)</th>
+      <th scope="col">Qty</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Image</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let da of data">
+      <td class="align-middle">{{da.name}}</td>
+      <td class="align-middle">{{da.category}}</td>
+      <td class="align-middle">{{da.price  | currency: "GBP":"symbol":"2.2-2"}}</td>
+      <td class="align-middle">{{da.quantity}}</td>
+      <td class="align-middle">{{da.quantity * da.price  | currency: "GBP":"symbol":"2.2-2"}}</td>
+      <td> <img src="../../assets/img/{{ da.product_id }}.jpeg"
+          alt="Generic placeholder image"
+          width="50"
+          class="ml-lg-5 order-1 order-lg-2" /></td>
+
+    </tr>
+
+  </tbody>
+</table>

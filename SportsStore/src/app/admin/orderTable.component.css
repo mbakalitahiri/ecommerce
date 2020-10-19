@@ -1,0 +1,27 @@
+
+.highlighted {
+  background-color: #007bff ;
+ }
+
+ .highlighted a {
+  color: white;
+ }
+
+
+
+ .text-my-own-color {
+  color: #663300  ;
+}
+
+.text-my-own-color a {
+  color: white;
+}
+
+
+.shipped{
+  background-color: #007bff ;
+  color: white;
+  padding:3px;
+  padding-left: 45px;
+  padding-right: 45px;
+}

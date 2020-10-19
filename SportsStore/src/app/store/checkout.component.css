@@ -1,0 +1,28 @@
+input.ng-dirty.ng-invalid {
+  border: 2px solid #ff0000
+}
+
+input.ng-dirty.ng-valid {
+  border: 2px solid #6bc502
+}
+
+
+.jumbotron {
+  background-color: #007bff;
+  color: white;
+  /*background-color:none !important;*/
+}
+
+
+
+.valid {
+  background-color: #28a745;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}

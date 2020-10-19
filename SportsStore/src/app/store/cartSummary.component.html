@@ -1,0 +1,30 @@
+<div class="container resumencarro">
+  <div class="row">
+  </div>
+  <div class="float-right">
+      <strong>
+          Your cart:
+          <span *ngIf="cart.itemCount > 0">       
+              {{ cart.cartPrice | currency:"GBP":"symbol":"2.2-2" }}
+            </span>
+          <span *ngIf="cart.itemCount == 0">
+              (empty)
+            </span>
+        </strong>
+
+      <button [ngClass]="{'btn btn-sm  text-light bg-dark':cart.itemCount < 1 ,
+    'btn btn-sm bg-success text-white':cart.itemCount != 0
+  }"
+            [disabled]="cart.itemCount == 0">
+
+
+      <i class="fa fa-shopping-cart pl-3"
+        [routerLink]="['/cart']"> </i>
+      <span *ngIf="cart.itemCount > 0">
+        <strong class="pl-2">{{ cart.itemCount }}</strong>     
+      </span>
+        
+    </button>
+  </div>
+
+</div>
