@@ -2,6 +2,33 @@
   style=" justify-content:center;">
   <h1>Product List</h1>
 </div>
+
+<div class="col-3 mb-3">
+          <select class="form-control"
+                  [value]="productsPerPage"
+                  (change)="changePageSize($event.target.value)">
+            
+  <option value="10">10 items per Page</option>
+            
+  <option value="20">20 items per Page</option>
+  <option value="30">30 items per Page</option>
+            
+  <option value="40">40 items per Page</option>
+        
+  <div class="btn-group mt-2">
+            
+    <button *counter="let page of pageCount"
+            (click)="changePage(page)"
+            class="btn btn-outline-primary btn-sm"
+            [class.active]="page == selectedPage">
+                {{ page }}         
+    </button>
+          
+  </div>
+        
+</select>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -32,3 +59,15 @@
 
   </tbody>
 </table>
+
+
+<div class="col-9 mt-4">
+  <ul class="pagination">
+    <li *counter="let page of pageCount"
+        (click)="changePage(page)"
+        class="page-item"
+        [class.active]="page == selectedPage">
+      <a class="page-link">{{ page }}</a>
+    </li>
+  </ul>
+</div>

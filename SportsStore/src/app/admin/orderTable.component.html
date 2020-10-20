@@ -1,88 +1,92 @@
 <!-- <div *ngIf="getOrders().length > 0 ;else empthyTable"> -->
 <div>
   <div class="row"
-    style=" justify-content:center;">
+       style=" justify-content:center;">
     <h1>Orders List</h1>
   </div>
 
 
   <div class="col-3">
             <select class="form-control"
-      [value]="productsPerPage"
-      (change)="changePageSize($event.target.value)">
-                
-      <option value="3">3 items per Page</option>
-                
-      <option value="4">4 items per Page</option>
-      <option value="6">6 items per Page</option>
-                
-      <option value="8">8 items per Page</option>
+                    [value]="productsPerPage"
+                    (change)="changePageSize($event.target.value)">
+              
+    <option value="10">10 items per Page</option>
+              
+    <option value="20">20 items per Page</option>
+    <option value="30">30 items per Page</option>
+              
+    <option value="40">40 items per Page</option>
+          
+    <div class="btn-group mt-2">
+              
+      <button *counter="let page of pageCount"
+              (click)="changePage(page)"
+              class="btn btn-outline-primary btn-sm"
+              [class.active]="page == selectedPage">
+                  {{ page }}         
+      </button>
             
-      <div class="btn-group mt-2">
-                <button *counter="let page of pageCount"
-          (click)="changePage(page)"
-          class="btn btn-outline-primary btn-sm"
-          [class.active]="page == selectedPage">
-                    {{ page }}         
-        </button>
-              
-      </div>
-            
-    </select>
+    </div>
+          
+  </select>
   </div>
-
-
 
 
   <table class="table   mt-2">
     <thead>
-      <tr>
-        <th scope="col">OrderId</th>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Zip</th>
-        <th scope="col">Country</th>
-        <th scope="col">Total</th>
-        <th scope="col">Total Items</th>
-        <th scope="col">Shipped</th>
-        <th scope="col">Date</th>
-        <th>Action</th>
-      </tr>
+    <tr>
+      <th scope="col">OrderId</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zip</th>
+      <th scope="col">Country</th>
+      <th scope="col">Total</th>
+      <th scope="col">Total Items</th>
+      <th scope="col">Shipped</th>
+      <th scope="col">Date</th>
+      <th>Action</th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let o of getOrders()"
+    <tr *ngFor="let o of getOrders()"
         (click)="selectCompany($event, o)"
         [class.highlighted]="o.id === currentCompany">
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.id}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.name}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.address}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.city}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.state}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.zip}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.country}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.cartPrice  | currency: "GBP":"symbol":"2.2-2"}}</a>
-        </td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.itemCount}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color"
-            [class.shipped]="o.shipped === 1">{{o.shipped ? 'shipped': 'processing payment'}}</a></td>
-        <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
-            class="text-my-own-color">{{o.datetime | date:'medium'}}</a></td>
-        <td><button class="btn btn-warning"
-            (click)="markShipped(o)">Ship</button><button class="btn btn-danger ml-2"
-            (click)="delete(o.id)">Delete</button></td>
-      </tr>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.id}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.name}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.address}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.city}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.state}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.zip}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.country}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.cartPrice  | currency: "GBP":"symbol":"2.2-2"}}</a>
+      </td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.itemCount}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color"
+                           [class.shipped]="o.shipped === 1">{{o.shipped ? 'shipped' : 'processing payment'}}</a></td>
+      <td class="label"><a [routerLink]="['/admin/main/orders/detaills', o.id]"
+                           class="text-my-own-color">{{o.datetime | date:'medium'}}</a></td>
+      <td>
+        <button class="btn btn-warning"
+                (click)="markShipped(o)">Ship
+        </button>
+        <button class="btn btn-danger ml-2"
+                (click)="delete(o.id)">Delete
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>
@@ -90,16 +94,16 @@
 <div class="col-9 mt-4">
   <ul class="pagination">
     <li *counter="let page of pageCount"
-      (click)="changePage(page)"
-      class="page-item"
-      [class.active]="page == selectedPage">
+        (click)="changePage(page)"
+        class="page-item"
+        [class.active]="page == selectedPage">
       <a class="page-link">{{ page }}</a>
     </li>
   </ul>
 </div>
 <ng-template #empthyTable>
   <div class="row"
-    style=" justify-content:center;">
+       style=" justify-content:center;">
     <h1>Orders List empty</h1>
   </div>
 </ng-template>
