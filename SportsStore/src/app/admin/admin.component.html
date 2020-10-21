@@ -1,44 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand"
-    href="#">SPORTS STORE</a>
+     href="#">SPORTS STORE</a>
   <button class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation">
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse"
-    id="navbarNavDropdown">
+       id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
-           routerLink="/admin/main/products"
-          routerLinkActive="active">Products</a>
+           routerLink="/admin/main/products"
+           routerLinkActive="active">Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
-          routerLink="/admin/main/orders"
-          routerLinkActive="active">Orders</a>
+           routerLink="/admin/main/orders"
+           routerLinkActive="active">Orders</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"
-          id="navbarDropdownMenuLink"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
+           id="navbarDropdownMenuLink"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false">
           Actions
         </a>
         <div class="dropdown-menu"
-          aria-labelledby="navbarDropdownMenuLink">
+             aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item"
-            (click)="logout()">Logout</a>
-          <a class="dropdown-item">Another action</a>
+             (click)="logout()">Logout</a>
+          <a class="dropdown-item" routerLink="/admin/main/search">Search orders</a>
           <a class="dropdown-item">Something else here</a>
         </div>
       </li>
@@ -46,5 +46,5 @@
   </div>
 </nav>
 <div class="col-12">
-              <router-outlet></router-outlet>
-          </div>
+  <router-outlet></router-outlet>
+</div>

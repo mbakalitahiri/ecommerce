@@ -9,6 +9,7 @@ const productsRoutes_1 = __importDefault(require("./routes/productsRoutes"));
 const ordersRoutes_1 = __importDefault(require("./routes/ordersRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
+const searchRoutes_1 = __importDefault(require("./routes/searchRoutes"));
 const cors_1 = __importDefault(require("cors"));
 class Server {
     constructor() {
@@ -28,6 +29,7 @@ class Server {
         this.app.use("/api/v1/products/", productsRoutes_1.default);
         this.app.use("/api/v1/orders/", ordersRoutes_1.default);
         this.app.use("/api/v1/login/", authRoutes_1.default);
+        this.app.use("/api/v1/search/", searchRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {

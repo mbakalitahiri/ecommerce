@@ -4,6 +4,10 @@ import productRoutes from "./routes/productsRoutes";
 import ordersRoutes from './routes/ordersRoutes'
 import authRoutes from './routes/authRoutes'
 import morgan from "morgan";
+import searchRoutes from './routes/searchRoutes'
+import querystring from 'querystring';
+
+
 import cors from "cors";
 
 class Server {
@@ -27,6 +31,8 @@ class Server {
     this.app.use("/api/v1/products/", productRoutes);
     this.app.use("/api/v1/orders/", ordersRoutes);
     this.app.use("/api/v1/login/", authRoutes);
+    this.app.use("/api/v1/search/", searchRoutes);
+
 
   }
 

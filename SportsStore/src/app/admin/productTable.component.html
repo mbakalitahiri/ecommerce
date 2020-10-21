@@ -4,28 +4,28 @@
 </div>
 
 <div class="col-3 mb-3">
-          <select class="form-control"
+  <select class="form-control"
                   [value]="productsPerPage"
                   (change)="changePageSize($event.target.value)">
-            
+
   <option value="10">10 items per Page</option>
-            
+
   <option value="20">20 items per Page</option>
   <option value="30">30 items per Page</option>
-            
+
   <option value="40">40 items per Page</option>
-        
+
   <div class="btn-group mt-2">
-            
+
     <button *counter="let page of pageCount"
             (click)="changePage(page)"
             class="btn btn-outline-primary btn-sm"
             [class.active]="page == selectedPage">
-                {{ page }}         
+      {{ page }}
     </button>
-          
+
   </div>
-        
+
 </select>
 </div>
 
@@ -48,11 +48,11 @@
       <td>{{p.price | currency: "GBP":"symbol":"2.2-2" }}</td>
       <td> <button class="btn btn-sm btn-warning m-1"
           [routerLink]="['/admin/main/products/edit', p.id]">
-                              Edit                 
+          Edit
         </button>
-         <button class="btn btn-sm btn-danger"
+        <button class="btn btn-sm btn-danger"
           (click)="deleteProduct(p.id)">
-                              Delete                 
+          Delete
         </button>
       </td>
     </tr>
