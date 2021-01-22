@@ -3,7 +3,7 @@ export default {
     host: "localhost",
     user: "mohtadi",
     password: "Estocolmo1",
-    database: "mycommerce",
+    database: "myecommerce",
     port: 3306,
   },
 };
